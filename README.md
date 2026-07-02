@@ -522,8 +522,6 @@ Runtime SCA does not perform CVE matching, source-code scanning, container-image
 
 ### Release Files
 
-If you publish only prebuilt binaries through GitHub Releases, the recommended files are:
-
 | File | Purpose |
 |------|---------|
 | `runtime-sca` | Linux x86_64 binary, preferably the static musl build |
