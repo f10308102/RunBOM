@@ -1,0 +1,46 @@
+# Complete RunBOM example configuration.
+# Delete or change any output path you do not want to generate.
+
+# Linux procfs root. Keep "/proc" on a normal Linux host.
+# Ignored by the FreeBSD DTrace backend.
+proc_root = "/proc"
+
+# Linux sysfs root, used for BTF and tracefs checks.
+# Ignored by the FreeBSD DTrace backend.
+sys_root = "/sys"
+
+# Observation duration in seconds. 0 means run until Ctrl+C or SIGTERM.
+duration_seconds = 60
+
+# Main output: CycloneDX 1.7 Runtime BOM.
+output_bom = "runtime-bom.cdx.json"
+
+# Optional output: one JSONL evidence record per observed component.
+evidence_output = "evidence.jsonl"
+
+# Optional output: CycloneDX BOM containing OS-package-owned runtime libraries only.
+os_lib_bom = "os-libs.cdx.json"
+
+# Optional output: JSON sidecar mapping each executable to loaded libraries.
+process_lib_report = "process-libs.json"
+
+# Optional output: full Runtime BOM plus CycloneDX dependencies graph.
+linked_bom = "linked-runtime-bom.cdx.json"
+
+# Capture already-running processes and executable mappings at startup.
+proc_baseline = true
+
+# Maximum number of observed files kept in memory.
+max_observed_files = 8192
+
+# Total byte budget for observed path strings.
+max_observed_path_bytes = 8388608
+
+# Timeout (seconds) for each native package-manager query
+# (Linux: dpkg-query / rpm, FreeBSD: pkg).
+# The legacy key `dpkg_timeout_seconds` is still accepted.
+package_query_timeout_seconds = 5
+
+# Empty = host-wide observation. List PIDs to restrict to those processes and
+# their descendants (equivalent to repeating --target-pid on the CLI).
+target_pids = []
